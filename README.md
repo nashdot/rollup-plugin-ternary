@@ -28,10 +28,7 @@ rollup({
       sourceMap: true,
 
       // Transforms only extra ternary expressions (Default: true)
-      extra: true,
-
-      // Show debug messages (Default: false)
-      debug: false
+      extra: true
     })
   ]
 });
