@@ -51,6 +51,7 @@ export default function plugin(options = {}) {
   const extensions = options.extensions || ['.js'];
   const filter = createFilter(options.include, options.exclude);
   const sourceMap = options.sourceMap !== false;
+  const extra = options.extra || true;
 
   return {
     transform: (code, id) => {
@@ -81,7 +82,7 @@ export default function plugin(options = {}) {
       walk(ast, {
         enter: (node) => {
           if (node.type === 'ConditionalExpression') {
-            if (options.extra && node.consequent.type !== 'ConditionalExpression') {
+            if (extra && node.consequent.type !== 'ConditionalExpression') {
               return;
             }
 
