@@ -4,9 +4,30 @@ import { walk } from 'estree-walker';
 import { createFilter } from 'rollup-pluginutils';
 import MagicString from 'magic-string';
 
+let strings = {};
+function pullStrings(string) {
+  return string.replace(/\"([^\"]+)\"/g, $m => {
+    let key = `#${Math.random()}`;
+    strings[key] = $m;
+
+    return key;
+  });
+}
+
+function pushStrings(string) {
+  Object.keys(strings).forEach(key => {
+    string = string.replace(key, strings[key]);
+  });
+
+  return string;
+}
+
 // from: https://gist.github.com/DavidWells/50b891a9e012a1e748c2
 function transform(string) {
   // console.log(`in: ${string}`);
+  string = pullStrings(string);
+  // console.log(`strings pulled: ${string}`);
+
   let questionMark = string.indexOf('?');
   let colon = string.indexOf(':', questionMark);
 
@@ -41,7 +62,9 @@ function transform(string) {
   //
   // console.log("-");
 
-  const result = `if (${condition}) {\n${transform(trueExpression)}\n} else {\n${transform(falseExpression)}\n}`;
+  let result = `if (${condition}) {\n${transform(trueExpression)}\n} else {\n${transform(falseExpression)}\n}`;
+  // console.log(`before strings pushed: ${result}`);
+  result = pushStrings(result);
   // console.log(`out: ${result}`);
 
   return result;
