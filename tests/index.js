@@ -15,8 +15,14 @@ function rollupTernary(filename, options = {}) {
   });
 }
 
-test('test_01', t => {
+test('basic 2-level nested', t => {
   return rollupTernary('test_01.js').then(b => {
     t.is(b.generate().code, expected('test_01.js'));
+  });
+});
+
+test('skip 1-level', t => {
+  return rollupTernary('test_02.js').then(b => {
+    t.is(b.generate().code, expected('test_02.js'));
   });
 });
