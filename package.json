@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "Unpack ternary conditional operators",
   "devDependencies": {
+    "ava": "^0.12.0",
     "babel-eslint": "^5.0.0",
     "babel-preset-es2015-rollup": "^1.1.0",
     "eslint": "^2.2.0",
@@ -18,7 +19,8 @@
   "jsnext:main": "dist/rollup-plugin-ternary.es6.js",
   "scripts": {
     "prebuild": "rimraf dist && eslint src/**/*.js",
-    "build": "rollup -c -f cjs -o dist/rollup-plugin-ternary.cjs.js && rollup -c -f es6 -o dist/rollup-plugin-ternary.es6.js"
+    "build": "rollup -c -f cjs -o dist/rollup-plugin-ternary.cjs.js && rollup -c -f es6 -o dist/rollup-plugin-ternary.es6.js",
+    "test": "ava"
   },
   "files": [
     "src",
@@ -42,5 +44,12 @@
   "bugs": {
     "url": "https://github.com/nashdot/rollup-plugin-ternary/issues"
   },
-  "homepage": "https://github.com/nashdot/rollup-plugin-ternary"
+  "homepage": "https://github.com/nashdot/rollup-plugin-ternary",
+  "ava": {
+    "files": [
+      "tests/*.js"
+    ],
+    "failFast": true,
+    "tap": true
+  }
 }
