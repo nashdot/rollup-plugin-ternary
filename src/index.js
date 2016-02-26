@@ -75,7 +75,7 @@ export default function plugin(options = {}) {
   const extensions = options.extensions || ['.js'];
   const filter = createFilter(options.include, options.exclude);
   const sourceMap = options.sourceMap !== false;
-  const extra = options.extra || true;
+  const extra = options.extra !== false;
 
   return {
     transform: (code, id) => {
