@@ -26,3 +26,9 @@ test('skip 1-level', t => {
     t.is(b.generate().code, expected('test_02.js'));
   });
 });
+
+test('transform 1-level if extra=false', t => {
+  return rollupTernary('test_03.js', { extra: false }).then(b => {
+    t.is(b.generate().code, expected('test_03.js'));
+  });
+});
