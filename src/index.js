@@ -4,10 +4,10 @@ import { walk } from 'estree-walker';
 import { createFilter } from 'rollup-pluginutils';
 import MagicString from 'magic-string';
 
-let strings = {};
+const strings = {};
 function pullStrings(string) {
   return string.replace(/\"([^\"]+)\"/g, $m => {
-    let key = `#${Math.random()}`;
+    const key = `#${Math.random()}`;
     strings[key] = $m;
 
     return key;
@@ -15,17 +15,18 @@ function pullStrings(string) {
 }
 
 function pushStrings(string) {
+  let result = string;
   Object.keys(strings).forEach(key => {
-    string = string.replace(key, strings[key]);
+    result = result.replace(key, strings[key]);
   });
 
-  return string;
+  return result;
 }
 
 // from: https://gist.github.com/DavidWells/50b891a9e012a1e748c2
-function transform(string) {
-  // console.log(`in: ${string}`);
-  string = pullStrings(string);
+function transform(expr) {
+  // console.log(`in: ${expr}`);
+  const string = pullStrings(expr);
   // console.log(`strings pulled: ${string}`);
 
   let questionMark = string.indexOf('?');
