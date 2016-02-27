@@ -18,8 +18,10 @@
   "main": "dist/rollup-plugin-ternary.cjs.js",
   "jsnext:main": "dist/rollup-plugin-ternary.es6.js",
   "scripts": {
-    "prebuild": "rimraf dist && eslint src/**/*.js",
+    "lint": "eslint .",
+    "prebuild": "rimraf dist && npm run lint",
     "build": "rollup -c -f cjs -o dist/rollup-plugin-ternary.cjs.js && rollup -c -f es6 -o dist/rollup-plugin-ternary.es6.js",
+    "pretest": "npm run build",
     "test": "ava"
   },
   "files": [

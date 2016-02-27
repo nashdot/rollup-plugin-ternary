@@ -6,7 +6,7 @@ import ternary from '..';
 
 const fixturesDir = join(__dirname, 'fixtures');
 const expectDir = join(__dirname, 'expect');
-const expected = name => fs.readFileSync(join(expectDir, name), 'utf8');
+const expected = name => { return fs.readFileSync(join(expectDir, name), 'utf8'); };
 
 function rollupTernary(filename, options = {}) {
   return rollup({
