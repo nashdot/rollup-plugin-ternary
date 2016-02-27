@@ -1,7 +1,7 @@
-if (!false ) {
-if ( process.env.NODE_ENV !== 'production' ) {
- invariant(false, 'Message') 
+if (!false) {
+if (process.env.NODE_ENV !== 'production') {
+invariant(false, 'Message')
 } else {
- invariant(false) 
+invariant(false)
 }
 } else {};

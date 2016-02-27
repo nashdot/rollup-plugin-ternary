@@ -1,5 +1,7 @@
-if (a === 1 ) {
- invariant(false, 'Message: failed?!') 
+if (!false) {
+if (process.env.NODE_ENV !== 'production') {
+invariant(false, 'Message: failed?!')
 } else {
- undefined
-};
+invariant(false)
+}
+} else {};

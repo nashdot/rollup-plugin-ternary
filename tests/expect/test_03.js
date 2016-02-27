@@ -1,5 +1,5 @@
-if (a === 1 ) {
- invariant(false, 'Message') 
+if (a === 1) {
+invariant(false, 'Message')
 } else {
- undefined
+undefined
 };

@@ -36,6 +36,5 @@ test('transform 1-level if extra=false', t => {
 test('transform 2-level with special chars', t => {
   return rollupTernary('test_04.js').then(b => {
     t.is(b.generate().code, expected('test_04.js'));
-    t.fail();
   });
 });
