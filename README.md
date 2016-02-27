@@ -14,8 +14,8 @@ import {rollup} from 'rollup';
 import ternary from 'rollup-plugin-ternary';
 
 rollup({
-	entry: 'src/index.js',
-	plugins: [
+  entry: 'src/index.js',
+  plugins: [
     ternary({
       // Restrict by extension (Default: .js)
       extensions: [ '.js', '.jsx' ],
