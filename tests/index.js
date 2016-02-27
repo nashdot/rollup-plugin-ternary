@@ -1,12 +1,12 @@
 import test from 'ava';
-import fs       from 'fs';
+import fs from 'fs';
 import { join } from 'path';
 import { rollup } from 'rollup';
 import ternary from '..';
 
 const fixturesDir = join(__dirname, 'fixtures');
-const expectDir   = join(__dirname, 'expect');
-const expected    = name => fs.readFileSync(join(expectDir, name), 'utf8');
+const expectDir = join(__dirname, 'expect');
+const expected = name => fs.readFileSync(join(expectDir, name), 'utf8');
 
 function rollupTernary(filename, options = {}) {
   return rollup({
