@@ -69,7 +69,6 @@ export default function plugin(options = {}) {
               magicString.addSourcemapLocation(node.end);
             }
 
-            // console.log(`\nfile: ${id}`);
             const converted = convert(node);
             magicString.overwrite(node.start, node.end, converted);
             return;
