@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-ternary",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Unpack ternary conditional operators",
   "devDependencies": {
     "ava": "^0.12.0",
